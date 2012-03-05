@@ -9,3 +9,8 @@ This scripts automatically runs the command to gain the ids of the applications 
 The script tries to determine where crossover's wine is located (in Linux) and which version of crossover do you have (Games or Office). It defaults to the Office (i.e. the non-games) version, which has recently become the *only* version with the release of **Crossover XI**. This script will still work for the older versions.
 
 
+**Usage:**
+
+    $ruby c4p.rb "BottleName"
+
+Where BottleName is the name of the bottle where the program is installed.
