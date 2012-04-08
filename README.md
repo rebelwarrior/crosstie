@@ -1,4 +1,4 @@
-![image](http://www.codeweavers.com/images/ranks/swag_sticker_K_256.png)
+![image](http://www.codeweavers.com/images/themes/cw6/cw_logo_top.png)
 
 Code Weavers' CrossOver Linux and CrossOver Mac can use a crosstie or [c4p](http://www.codeweavers.com/support/wiki/c4p_user) recipie for installing windows programs. 
 
