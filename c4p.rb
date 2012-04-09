@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-default_cx = "cxoffice"
 userpath = File.expand_path("~") #allows me to get user path.
 
+#Resolving Arguments
 if ARGV[0].nil? 
   then puts "You must at least supply a Bottle Name (in quotes) as an argument." ; return
 end
@@ -28,8 +28,8 @@ then
     when "-o"
       cx = "cxoffice"
     else 
-      puts "Assuming you meant #{default_cx}." 
-      cx = default_cx
+      puts "Assuming you meant Cross Over (Office)." 
+      cx = "cxoffice"
   end
 elsif FileTest.directory?("#{userpath}/.cxoffice")
   cx = "cxoffice"
