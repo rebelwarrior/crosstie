@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 require 'optparse'
+test = true  #for testing only
+
 
 def bottle_array(userpath)
   bottles = Dir.glob("#{userpath}/.cxoffice/*").select { |i| File.directory?(i) }
@@ -30,23 +32,33 @@ option_parser = OptionParser.new do |opts|
     if File.directory?("#{userpath}/.cxgames") 
       cx = "cxgames"
     else 
-      abort("Can't find Cross Over Games user Directory.")
+      abort("Can't find Cross Over Games user Directory.") unless test
     end
   end
 end
 begin
   option_parser.parse!
-rescue OptionParser::InvalidArgument
+rescue OptionParser::InvalidArgument => e
+  puts e
   puts "Usage: c4p.rb -b 'Bottle Name'\nAvailable bottles: #{bottles.join(", ")}"
-  exit
+  exit(1)
 end
 
 puts "#####################"
-puts ARGV
+puts ARGV #option parse removes the arguments used from the the list.
+if ARGV && bottle_name.nil? && bottles.include?(ARGV[0])
+  bottle_name = ARGV[0] #if bottles.include?(ARGV[0])
+elsif ARGV[0] && bottle_name.nil?
+  puts "#{ARGV[0]} Bottle not Found."
+  puts "Available bottles: #{bottles.join(", ")}"
+  exit
+end  
 puts "#=> Using #{bottle_name} bottle"
 puts "#####################"
 # 
 # 
+
+abort("Bottle name can't be blank") if bottle_name.nil?
 
 #Check if bottle_name exists
 #unless FileTest.directory?("#{userpath}/.#{cx}/#{bottle_name}") 
@@ -54,16 +66,16 @@ puts "#####################"
 #  exit
 #end
 
-if cx == "cxgames" #for testing only
 #/opt/ or other directory for cx office/games
+
 if FileTest.directory?("/opt/#{cx}")
   cxpath = "/opt/#{cx}" 
 elsif FileTest.directory?("#{userpath}/.#{cx}/bin/") 
   cxpath = "#{userpath}/.#{cx}"
 else 
-  abort("Can't find your cx wine directory.")
+  abort("Can't find your cx wine directory.") unless test #remove unless after test
 end
-end #remove after test
+
 
 #change %Q for %x for real use. Testing at the moment.
 puts %Q`#{cxpath}/bin/wine --bottle "#{bottle_name}" ~/.#{cx}/#{bottle_name}/drive_c/windows/system32/uninstaller.exe --list`
