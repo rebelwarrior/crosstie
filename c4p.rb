@@ -3,8 +3,9 @@ require 'optparse'
 userpath = File.expand_path("~") #allows me to get user path.
 
 option_parser = OptionParser.new do |opts|
-  opts.on("-h", "--help") do
-    puts "You must at least supply a Bottle Name (in quotes) as an argument."
+  opts.banner = "You must at least supply a Bottle Name (in quotes) as an argument."
+  opts.on("-h", "--help", "Show this menu") do
+    puts opts
   end
   opts.on("BOTTLE","-b BOTTLE", "--bottle" ) do |bottle| #add block to validate dir
    #FileTest.directory?("#{userpath}/.#{cx}/#{bottle_name}") 
