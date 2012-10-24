@@ -14,3 +14,5 @@ The script tries to determine where crossover's wine is located (in Linux) and w
     $ruby c4p.rb "BottleName"
 
 Where BottleName is the name of the bottle where the program is installed.
+
+**REFACTORING** use old file for now. New one not tested.
