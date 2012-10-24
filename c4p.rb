@@ -4,9 +4,7 @@ userpath = File.expand_path("~") #allows me to get user path.
 
 option_parser = OptionParser.new do |opts|
   opts.banner = "You must at least supply a Bottle Name (in quotes) as an argument."
-  opts.on("-h", "--help", "Show this menu") do
-    puts opts
-  end
+  opts.on("-h", "--help", "Show this menu") { puts opts; exit }
   opts.on("BOTTLE","-b BOTTLE", "--bottle" ) do |bottle| #add block to validate dir
    #FileTest.directory?("#{userpath}/.#{cx}/#{bottle_name}") 
    bottle_name = bottle
