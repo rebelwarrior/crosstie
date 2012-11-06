@@ -64,8 +64,8 @@ def process_argv(bottle_name, bottles, argv=ARGV)
       exit(1)
     else
       puts "Bottle Name can't be blank."
-      # puts "Use '-h' for help.\nAvailable bottles: #{bottles.join(", ")}"
-      puts option_parser.help
+      puts "Use '-h' for help.\nAvailable bottles: #{bottles.join(", ")}"
+      # puts option_parser.help #Doesn't quite work. Why?
       exit(1)
     end
   end
