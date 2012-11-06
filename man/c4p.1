@@ -1,0 +1,36 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "C4P\.RB" "1" "November 2012" "" ""
+.
+.SH "NAME"
+\fBc4p\.rb\fR \- Generate the Install Glob for CrossOver Apps in Bottles
+.
+.SH "SYNOPSIS"
+\fBruby c4p\.rb\fR \fIbottle_name\fR
+.
+.br
+\fBruby c4p\.rb\fR \fB\-b bottle_name\fR \fBruby c4p\.rb\fR \fB\-\-list\fR | \fB\-l\fR
+.
+.SH "DESCRIPTION"
+\fBc4p\.rb\fR is a quick command\-line tool for generating the install glob of applications installed in a CrossOver bottle\. The glob is necessary for creating crossties (formerly called c4p profiles) that allow automatic installation of applications through CrossOver\'s Install menu\.
+.
+.P
+Using the \fB\-b\fR or \fB\-\-bottle\fR options allows for autocomplete of the bottle names\. The program searches the default directories and creates a list of available bottles\.
+.
+.SH "OPTIONS"
+.
+.nf
+
+\-v, \-\-version                    Display version info
+\-h, \-\-help                       Display this menu
+\-t, \-\-test                       Doesn\'t execute only builds String
+\-l, \-\-list                       Lists Available Bottles
+\-b, \-\-bottle BOTTLE              Assigns a bottle to use from list of
+                                  available bottles in system
+\-g, \-\-games                      Use CrossOver Games: old versions only
+.
+.fi
+.
+.SH "EXAMPLES"
+Generate the globs for bottle "Daz" $ ruby c4p\.rb \-b Daz

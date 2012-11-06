@@ -1,18 +1,19 @@
 #!/usr/bin/env ruby
 require 'optparse'
 
-def bottle_array(userpath)
-  bottles = Dir.glob("#{userpath}/.cxoffice/*").select { |i| File.directory?(i) }
-  Dir.glob("#{userpath}/.cxgames/*").select { |i| File.directory?(i) }.each do
-    bottles << i
+def bottle_array(userpath, exc_games=false)
+  bottles = Dir.glob("#{userpath}/.cxoffice/*").select { |i| FileTest.directory?(i) }
+  unless exc_games
+    Dir.glob("#{userpath}/.cxgames/*").select { |i| FileTest.directory?(i) }.each do
+      bottles << i
+    end
   end
-  bottles = bottles.map { |i| i.split('/').last }.reject do |i| 
+  bottles.map! { |i| i.split('/').last }.reject do |i| 
     i["tie"] or i["installers"] or i["desktopdata"] 
-  end
-  bottles
+  end 
 end
 
-test = false  
+test = false #default to false unless testing  
 userpath = File.expand_path("~") #allows me to get user path.
 bottles = bottle_array(userpath)
 cx = "cxoffice"
@@ -20,7 +21,8 @@ bottle_name = nil #THIS HAS TO BE THERE! why? closure.
 
 #Command Line Options Set up.
 option_parser = OptionParser.new ('banner can go here') do |opts|
-  opts.banner = '#=> Example Usage: c4p.rb -b "Bottle Name" ' #moved it!
+  opts.banner = %Q`#=> Example Usage: #{File.basename($0)} -b "Bottle Name" ` 
+  #moved it!
   opts.program_name = "CrossTie Install Pattern Finder:" #defaults to $0
   opts.version = "2.0"
   opts.on("-v", "--version", "Display version info") {puts opts.ver; exit }
@@ -32,7 +34,7 @@ option_parser = OptionParser.new ('banner can go here') do |opts|
   opts.on("-g", "--games", "Use CrossOver Games: old versions only") do 
     cx = "cxgames"
     raise OptionParser::InvalidOption, \
-    "Can't find user .cxgames directory." unless File.directory?("#{userpath}/.cxgames")
+    "Can't find user .cxgames directory." unless FileTest.directory?("#{userpath}/.cxgames")
   end
 end
 
@@ -62,7 +64,8 @@ def process_argv(bottle_name, bottles, argv=ARGV)
       exit(1)
     else
       puts "Bottle Name can't be blank."
-      puts "Use '-h' for help.\nAvailable bottles: #{bottles.join(", ")}"
+      # puts "Use '-h' for help.\nAvailable bottles: #{bottles.join(", ")}"
+      puts option_parser.help
       exit(1)
     end
   end

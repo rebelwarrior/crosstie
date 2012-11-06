@@ -1,0 +1,25 @@
+c4p.rb(1) -- Generate the Install Glob for CrossOver Apps in Bottles
+=====================================================
+
+## SYNOPSIS
+`ruby c4p.rb` <bottle_name><br>
+`ruby c4p.rb` `-b bottle_name`
+`ruby c4p.rb` `--list` | `-l`
+
+## DESCRIPTION
+**c4p.rb** is a quick command-line tool for generating the install glob of applications installed in a CrossOver bottle. The glob is necessary for creating crossties (formerly called c4p profiles) that allow automatic installation of applications through CrossOver's Install menu.
+
+Using the `-b` or `--bottle` options allows for autocomplete of the bottle names. The program searches the default directories and creates a list of available bottles. 
+
+## OPTIONS
+    -v, --version                    Display version info
+    -h, --help                       Display this menu
+    -t, --test                       Doesn't execute only builds String
+    -l, --list                       Lists Available Bottles
+    -b, --bottle BOTTLE              Assigns a bottle to use from list of 
+									  available bottles in system
+    -g, --games                      Use CrossOver Games: old versions only
+
+## EXAMPLES 
+Generate the globs for bottle "Daz"
+  $ ruby c4p.rb -b Daz
