@@ -1,7 +1,9 @@
 Feature: List the ids of applications running in a crossover bottle
   As a busy CrossOver Advocate, I want to write CrossTies quickly.
-  This requires obtaining the unique process id of each application running under CrossOver wine in Linux.
-  All Scenarios have the following givens: On a Linux Computer with CrossOver installed unless specified.
+  This requires obtaining the unique process id of each application 
+    running under CrossOver wine in Linux.
+  All Scenarios have the following given: 
+    On a Linux Computer with CrossOver installed unless specified.
   
   
 Scenario: List Available Bottles with option '-l'
