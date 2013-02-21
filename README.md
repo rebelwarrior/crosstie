@@ -20,3 +20,9 @@ You can do: `$ruby c4p.rb -h` for help on the new file.
 	
 
 **RE-FACTORED** to use option parse. Old file left for comparison purposes.
+
+**TO DO**
+
+1. Add Aruba tests.
+
+- Have it detect Macs automatically and prompt w/ proper command w/o running script. (Changed to just a passive warning if not using Linux.)

@@ -13,11 +13,13 @@ def bottle_array(userpath, exc_games=false)
   end 
 end
 
+##DEFAULTS##
 test = false #default to false unless testing  
 userpath = File.expand_path("~") #allows me to get user path.
 bottles = bottle_array(userpath)
 cx = "cxoffice"
 bottle_name = nil #THIS HAS TO BE THERE! why? closure.
+(warn '## Warning: System Not Linux ##'; test = true) unless RUBY_PLATFORM['inux'] 
 
 #Command Line Options Set up.
 option_parser = OptionParser.new ('banner can go here') do |opts|
@@ -40,6 +42,7 @@ end
 
 begin
   option_parser.parse!
+  @help = option_parser.help
 rescue OptionParser::InvalidArgument => e
   puts e
   puts "Usage: c4p.rb -b 'Bottle Name'\nAvailable bottles: #{bottles.join(", ")}"
@@ -65,7 +68,7 @@ def process_argv(bottle_name, bottles, argv=ARGV)
     else
       puts "Bottle Name can't be blank."
       puts "Use '-h' for help.\nAvailable bottles: #{bottles.join(", ")}"
-      # puts option_parser.help #Doesn't quite work. Why?
+      puts @help #Doesn't quite work. Why?
       exit(1)
     end
   end

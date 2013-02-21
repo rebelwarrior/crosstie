@@ -1,13 +1,13 @@
-c4p.rb(1) -- Generate the Install Glob for CrossOver Apps in Bottles
+crosstie.rb(1) -- Generate the Install Glob for CrossOver Apps in Bottles
 =====================================================
 
 ## SYNOPSIS
-`ruby c4p.rb` <bottle_name><br>
-`ruby c4p.rb` `-b bottle_name`
-`ruby c4p.rb` `--list` | `-l`
+`ruby crosstie.rb` <bottle_name><br>
+`ruby crosstie.rb` `-b bottle_name`
+`ruby crosstie.rb` `--list` | `-l`
 
 ## DESCRIPTION
-**c4p.rb** is a quick command-line tool for generating the install glob of applications installed in a CrossOver bottle. The glob is necessary for creating crossties (formerly called c4p profiles) that allow automatic installation of applications through CrossOver's Install menu.
+**crosstie.rb** is a quick command-line tool for generating the install glob of applications installed in a CrossOver bottle. The glob is necessary for creating crossties (formerly called c4p profiles) that allow automatic installation of applications through CrossOver's Install menu.
 
 Using the `-b` or `--bottle` options allows for autocomplete of the bottle names. The program searches the default directories and creates a list of available bottles. 
 
@@ -22,5 +22,4 @@ Using the `-b` or `--bottle` options allows for autocomplete of the bottle names
 
 ## EXAMPLES 
 Generate the globs for bottle "Daz"
-
- `$ ruby c4p.rb -b Daz`
+  $ ruby crosstie.rb -b Daz
