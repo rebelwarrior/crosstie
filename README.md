@@ -17,12 +17,14 @@ The new re-factored file, looks for all available bottles in your `~/.cxoffice` 
 Where BottleName is the name of the bottle where the program is installed.
 
 You can do: `$ruby c4p.rb -h` for help on the new file. 
-	
 
-**RE-FACTORED** to use option parse. Old file left for comparison purposes.
+Change Log:  
+- **RE-FACTORED** to use option parse. Old file left for comparison purposes.  
+- Added Passive Warning for non-Linux systems  
+- Created 'bin' directory structure for learning Aruba (it's complete overkill for a one file script)
 
 **TO DO**
 
 1. Add Aruba tests.
-- Have it detect Macs automatically and prompt w/ proper command w/o running script. 
-   (Changed to just a passive warning if not using Linux.)
+2. Add unit tests.
+3. Finish Cucumber tests.
